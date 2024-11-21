@@ -63,7 +63,7 @@ Stop Time 11/12/2024 10:34:12
 
 ![(before)mssql-auth-fail](https://github.com/user-attachments/assets/d8daae66-9880-4da1-a843-3c20872d7ce8)
 
-##Incident handling 
+## Incident handling 
 
  
 
