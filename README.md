@@ -75,7 +75,7 @@ During the log investigation:
 
 
 -It was concluded that there were no actual breaches into our VM’s and SQL Database but a large number of brute-force attempts from multiple sources due to insecure NSG’s.    
--A malicious file was downloaded on the Windows-VM and blocked by the antivirus software.   
+-An EICAR file was deployed on the windows machine to test trigger an antivirus response.
 -An Azure account was compromised by a brute-force attack and a stored secret was viewed in Key Vault.   
 
  
@@ -87,7 +87,6 @@ The hardening measures and security controls implemented include:
 
 -Network Security Groups (NSG’s): All inbound and outbound traffic was blocked with the exception of my admin workstation Public IP Address ensuring that only trusted traffic is allowed to access the virtual machines.   
 -Firewalls: The built-in firewalls were configured to protect resources and restrict access from unauthorized connections minimizing the attack surface.   
--An up-to-date antivirus scan was conducted, and processes were closely monitored for any unauthorized activity.   
 -Private Endpoints: The Public Endpoints were replaced with Private Endpoints ensuring that access is limited and the sensitive resources such as databases are protected.   
 -Azure Password reset: The affected Azure Account user had their password reset.   
 -MFA: Multi factor authentication was implemented for all Azure accounts to protect against brute force attempts.   
