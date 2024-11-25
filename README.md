@@ -75,7 +75,7 @@ During the log investigation:
 
 
 -It was concluded that there were no actual breaches into our VM’s and SQL Database but a large number of brute-force attempts from multiple sources due to insecure NSG’s.    
--An EICAR file was deployed on the windows machine to test trigger an antivirus response.
+-An EICAR file was deployed on the windows machine to test trigger an antivirus response.                  
 -An Azure account was compromised by a brute-force attack and a stored secret was viewed in Key Vault.   
 
  
