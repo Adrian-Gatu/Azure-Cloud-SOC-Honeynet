@@ -4,11 +4,11 @@
 
 This project’s aim was to build a mini Honeynet in Azure and ingest the logs from various sources into a Log Analytics Workspace, which is then used by Microsoft Sentinel to trigger alerts, create incidents and build Attack Maps. In this project, using KQL queries we will measure some security metrics for a 24-hour period in the insecure environment, we will implement security controls to harden the environment, measure the metrics for another 24-hour and show the results. The metrics we will show are: 
 
--Syslog (Linux Event Logs)  
--SecurityEvent (Windows Event Logs)   
--SecurityAlert (Log Analytics Alert Triggered)   
--SecurityIncident (Incidents Created by Sentinel)   
--AzureNetworkAnalytics_CL (Malicious flows allowed into our honeynet)   
+- Syslog (Linux Event Logs)  
+- SecurityEvent (Windows Event Logs)   
+- SecurityAlert (Log Analytics Alert Triggered)   
+- SecurityIncident (Incidents Created by Sentinel)   
+- AzureNetworkAnalytics_CL (Malicious flows allowed into our honeynet)   
 
 
 ## Infrastructure and log aggregation 
@@ -17,14 +17,14 @@ This project’s aim was to build a mini Honeynet in Azure and ingest the logs f
 
 The architecture of the Honeynet consists of the following components:
 
--Virtual Network (VNet)  
--Virtual Machines (1x Linux, 2x Windows)   
--SQL Database (Installed on a Windows VM)   
--Network Security Groups (NSG’s)   
--Azure Key Vault (containing stored secrets)   
--Azure Blob Storage Account (containing geoip data)   
--Log Analytics Workspace   
--Microsoft Sentinel   
+- Virtual Network (VNet)  
+- Virtual Machines (1x Linux, 2x Windows)   
+- SQL Database (Installed on a Windows VM)   
+- Network Security Groups (NSG’s)   
+- Azure Key Vault (containing stored secrets)   
+- Azure Blob Storage Account (containing geoip data)   
+- Log Analytics Workspace   
+- Microsoft Sentinel   
 
 
 After deploying the resources mentioned above, data collection rules were configured to send the collected logs to a central repository (Log Analytics Workspace), and several rules were established to trigger incidents in Microsoft Sentinel. A virtual machine (VM) was utilized to simulate an attacker, testing the environment. This approach verified that logs were correctly aggregated into the Log Analytics Workspace and ensured that the analytic rules in Microsoft Sentinel triggered incidents as expected. 
@@ -74,9 +74,9 @@ The incident handling guidance was done in accordance with NIST SP 800-61 Revisi
 During the log investigation: 
 
 
--It was concluded that there were no actual breaches into our VM’s and SQL Database but a large number of brute-force attempts from multiple sources due to insecure NSG’s.    
--An EICAR file was deployed on the windows machine to test trigger an antivirus response.                  
--An Azure account was compromised by a brute-force attack and a stored secret was viewed in Key Vault.   
+- It was concluded that there were no actual breaches into our VM’s and SQL Database but a large number of brute-force attempts from multiple sources due to insecure NSG’s.    
+- An EICAR file was deployed on the windows machine to test trigger an antivirus response.                  
+- An Azure account was compromised by a brute-force attack and a stored secret was viewed in Key Vault.   
 
  
 
@@ -85,12 +85,12 @@ During the log investigation:
 The hardening measures and security controls implemented include: 
 
 
--Network Security Groups (NSG’s): All inbound and outbound traffic was blocked with the exception of my admin workstation Public IP Address ensuring that only trusted traffic is allowed to access the virtual machines.   
--Firewalls: The built-in firewalls were configured to protect resources and restrict access from unauthorized connections minimizing the attack surface.   
--Private Endpoints: The Public Endpoints were replaced with Private Endpoints ensuring that access is limited and the sensitive resources such as databases are protected.   
--Azure Password reset: The affected Azure Account user had their password reset.   
--MFA: Multi factor authentication was implemented for all Azure accounts to protect against brute force attempts.   
--Regenerated the compromised Key Vault Secrets   
+- Network Security Groups (NSG’s): All inbound and outbound traffic was blocked with the exception of my admin workstation Public IP Address ensuring that only trusted traffic is allowed to access the virtual machines.   
+- Firewalls: The built-in firewalls were configured to protect resources and restrict access from unauthorized connections minimizing the attack surface.   
+- Private Endpoints: The Public Endpoints were replaced with Private Endpoints ensuring that access is limited and the sensitive resources such as databases are protected.   
+- Azure Password reset: The affected Azure Account user had their password reset.   
+- MFA: Multi factor authentication was implemented for all Azure accounts to protect against brute force attempts.   
+- Regenerated the compromised Key Vault Secrets   
 
  
 
